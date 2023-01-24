@@ -1,5 +1,6 @@
 ﻿namespace DataBaseModel.Data
 {
+    using AutoMapper;
     using DataBaseModel.DTOModels;
     using DataBaseModel.Models;
     using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@
 
     public class DatabaseContext : DbContext
     {
+        private readonly IMapper _maper;
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Customer> Customers{ get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -49,36 +51,22 @@
 
         public IQueryable<SellerDto> GetSellers()
         {
-            return this.Sellers.Select(s => new SellerDto { Id = s.Id, LastName = s.LastName, FirstName = s.FirstName });
+            return this.Sellers.Select(s => _maper.Map<SellerDto>(s));
         }
 
         public IQueryable<CustomerDto> GetCustomers()
         {
-            return this.Customers.Select(c => new CustomerDto { Id = c.Id, CompanyName = c.CompanyName, });
+            return this.Customers.Select(c => _maper.Map<CustomerDto>(c));
         }
 
         public IQueryable<OrderDto> GetOrders()
         {
-            return this.Orders.Select(o => new OrderDto { Id = o.Id, OrderDate = o.OrderDate, Amount = o.Amount });
+            return this.Orders.Select(o => _maper.Map<OrderDto>(o));
         }
 
         public IQueryable<OrderDetailDto> GetOrder(int id)
         {
-            var fullOrder = this.Orders
-                .Include(o => o.Seller)
-                .Include(o => o.Customer)
-                .Select(o => new OrderDetailDto
-                {
-                    Id = o.Id,
-                    OrderDate = o.OrderDate,
-                    Amount = o.Amount,
-                    SellerLastName = o.Seller.LastName,
-                    SellerFirstName = o.Seller.FirstName,
-                    CustomerCompanyName = o.Customer.CompanyName,
-                })
-                .Where(o => o.Id == id);
-
-            return fullOrder;
+            return this.Orders.Select(o => _maper.Map<OrderDetailDto>(o));
         }
     }
 }
