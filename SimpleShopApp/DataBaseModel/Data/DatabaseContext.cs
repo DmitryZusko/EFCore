@@ -1,16 +1,13 @@
 ﻿namespace DataBaseModel.Data
 {
-    using AutoMapper;
-    using DataBaseModel.DTOModels;
-    using DataBaseModel.Models;
+    using DataBaseModel.DatabaseModels;
     using Microsoft.EntityFrameworkCore;
-    using System.Security.Cryptography.X509Certificates;
+    using System;
 
     public class DatabaseContext : DbContext
     {
-        private readonly IMapper _maper;
         public DbSet<Seller> Sellers { get; set; }
-        public DbSet<Customer> Customers{ get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,12 +16,12 @@
 
         public void PopulateDataBase()
         {
-            Sellers.AddRangeAsync(new Seller { LastName = "Joestar", FirstName = "George" },
-                new Seller { LastName = "Rodrigez", FirstName = "Michelle" });
-            Customers.AddRangeAsync(new Customer { CompanyName = "Target" },
-                new Customer { CompanyName = "Hamlin, Hanlin & McGill" });
-            SaveChangesAsync();
-            Orders.AddRangeAsync(
+            Sellers.AddRange(new Seller { FullName = "George Joestar" },
+                new Seller { FullName = "Michelle Rodrigez" });
+            Customers.AddRange(new Customer { Company = "Target" },
+                new Customer { Company = "Hamlin, Hamlin & McGill" });
+            SaveChanges();
+            Orders.AddRange(
                 new Order
                 {
                     OrderDate = DateTime.UtcNow,
@@ -46,27 +43,7 @@
                     SellerId = 2,
                     CustomerId = 2
                 });
-            SaveChangesAsync();
-        }
-
-        public IQueryable<SellerDto> GetSellers()
-        {
-            return this.Sellers.Select(s => _maper.Map<SellerDto>(s));
-        }
-
-        public IQueryable<CustomerDto> GetCustomers()
-        {
-            return this.Customers.Select(c => _maper.Map<CustomerDto>(c));
-        }
-
-        public IQueryable<OrderDto> GetOrders()
-        {
-            return this.Orders.Select(o => _maper.Map<OrderDto>(o));
-        }
-
-        public IQueryable<OrderDetailDto> GetOrder(int id)
-        {
-            return this.Orders.Select(o => _maper.Map<OrderDetailDto>(o));
+            SaveChanges();
         }
     }
 }

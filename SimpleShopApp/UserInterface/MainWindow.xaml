@@ -1,0 +1,28 @@
+﻿<Window x:Class="UserInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid Name="dataGrid" Margin="38,82,118,24" CanUserAddRows="False"/>
+        <Button Name="sellersButton" Content="Sellers" 
+                HorizontalAlignment="Left" Margin="60,25,0,0" 
+                VerticalAlignment="Top" Height="40" Width="85" 
+                Click="sellersButton_Click"/>
+        <Button Name="customersButton" Content="Customers" 
+                HorizontalAlignment="Left" Margin="325,25,0,0" 
+                VerticalAlignment="Top" Height="40" Width="85"
+                Click="customersButton_Click"/>
+        <Button Name="ordersButton" Content="Orders" 
+                HorizontalAlignment="Left" Margin="580,25,0,0" 
+                VerticalAlignment="Top" Height="40" Width="85"
+                Click="ordersButton_Click"/>
+        <Button Name="addNewButton" Content="Add New" 
+                HorizontalAlignment="Left" Margin="710,180,0,0" 
+                VerticalAlignment="Top" Height="30" Width="70"
+                Click="addNewButton_Click"/>
+    </Grid>
+</Window>

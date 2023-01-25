@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseModel", "DataBaseModel\DataBaseModel.csproj", "{0A521A71-3D38-4EF1-96CE-BFBE52C0333D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseModel", "DataBaseModel\DataBaseModel.csproj", "{0A521A71-3D38-4EF1-96CE-BFBE52C0333D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{D41F2EFB-AF18-4B15-BA30-A2ABC38A8D1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0A521A71-3D38-4EF1-96CE-BFBE52C0333D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A521A71-3D38-4EF1-96CE-BFBE52C0333D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A521A71-3D38-4EF1-96CE-BFBE52C0333D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41F2EFB-AF18-4B15-BA30-A2ABC38A8D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41F2EFB-AF18-4B15-BA30-A2ABC38A8D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41F2EFB-AF18-4B15-BA30-A2ABC38A8D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41F2EFB-AF18-4B15-BA30-A2ABC38A8D1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

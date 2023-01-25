@@ -1,0 +1,26 @@
+﻿<Window x:Class="UserInterface.CRUDWindows.AddNewSellerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface.CRUDWindows"
+        mc:Ignorable="d"
+        Title="AddNewSellerwindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0
+                   ,40,0,0" 
+                   TextWrapping="Wrap" Text="NEW SELLER" FontSize="56"
+                    VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock TextWrapping="Wrap" Text="Full Name"
+                   Margin="0, -70, 0, 0" FontSize="36"
+                   Height="50" Width="180"/>
+        <TextBox Name="nameTextBox" TextWrapping="Wrap" FontSize="42"
+                 Margin="0, 80, 0, 0" Height="75" Width="300"/>
+        <Button Name="okButton" Content="OK" Height="50" Width="150"
+                Margin="-500, 300, 0, 0" FontSize="24"
+                Click="okButton_Click"/>
+        <Button Name="cancleButton" Content="Cancel" Height="50" Width="150"
+                Margin="500, 300, 0, 0" FontSize="24"
+                Click="cancleButton_Click"/>
+    </Grid>
+</Window>

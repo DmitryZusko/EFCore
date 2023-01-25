@@ -22,7 +22,7 @@ namespace DataBaseModel.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DataBaseModel.Models.Customer", b =>
+            modelBuilder.Entity("DataBaseModel.DatabaseModels.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,7 +30,7 @@ namespace DataBaseModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CompanyName")
+                    b.Property<string>("Company")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -39,7 +39,7 @@ namespace DataBaseModel.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("DataBaseModel.Models.Order", b =>
+            modelBuilder.Entity("DataBaseModel.DatabaseModels.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace DataBaseModel.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("DataBaseModel.Models.Seller", b =>
+            modelBuilder.Entity("DataBaseModel.DatabaseModels.Seller", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,11 +76,7 @@ namespace DataBaseModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -89,15 +85,15 @@ namespace DataBaseModel.Migrations
                     b.ToTable("Sellers");
                 });
 
-            modelBuilder.Entity("DataBaseModel.Models.Order", b =>
+            modelBuilder.Entity("DataBaseModel.DatabaseModels.Order", b =>
                 {
-                    b.HasOne("DataBaseModel.Models.Customer", "Customer")
+                    b.HasOne("DataBaseModel.DatabaseModels.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBaseModel.Models.Seller", "Seller")
+                    b.HasOne("DataBaseModel.DatabaseModels.Seller", "Seller")
                         .WithMany()
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
