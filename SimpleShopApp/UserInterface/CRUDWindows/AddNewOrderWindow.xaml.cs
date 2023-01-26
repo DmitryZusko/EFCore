@@ -18,21 +18,14 @@ namespace UserInterface.CRUDWindows
 
             DBContextVM = context;
             sellerListBox.ItemsSource = DBContextVM.Sellers.Select(s => s.FullName);
+            sellerListBox.SelectedIndex = 0;
             customerListBox.ItemsSource = DBContextVM.Customers.Select(c => c.Company);
+            customerListBox.SelectedIndex = 0;
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            decimal amount;
-            decimal.TryParse(amountTextBox.Text, out amount);
-            var newOrder = new OrderDetailDto
-            {
-                OrderDate = DateTime.UtcNow,
-                Amount = amount,
-                SellerFullName = sellerListBox.SelectedItem.ToString(),
-                CustomerCompany = customerListBox.SelectedItem.ToString(),
-            };
-            DBContextVM.AddNewOrder(newOrder);
+            DBContextVM.AddNewOrder(amountTextBox.Text, sellerListBox.SelectedItem.ToString(), customerListBox.SelectedItem.ToString());
             Close();
         }
 

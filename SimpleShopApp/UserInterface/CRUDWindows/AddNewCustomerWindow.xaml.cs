@@ -30,8 +30,7 @@ namespace UserInterface.CRUDWindows
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            var newCustomer = new CustomerDto { Company = companyNameTextBox.Text };
-            DBContext.AddNewCustomer(newCustomer);
+            DBContext.AddNewCustomer(companyNameTextBox.Text);
             Close();
         }
         private void cancleButton_Click(object sender, RoutedEventArgs e)

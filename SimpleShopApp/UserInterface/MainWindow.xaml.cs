@@ -17,7 +17,7 @@
     {
         private DatabaseContext _dbContext;
 
-        public DBContextViewModel DBContextViewModel { get; set; }
+        public DBContextViewModel DBContextVM { get; set; }
         public DatabaseItemSourseType ItemSourseType { get; set; }
         public MainWindow()
         {
@@ -29,29 +29,41 @@
                 _dbContext.PopulateDataBase();
             }
 
-            DBContextViewModel = new DBContextViewModel(_dbContext);
+            DBContextVM = new DBContextViewModel(_dbContext);
 
-            dataGrid.ItemsSource = DBContextViewModel.Sellers;
+            dataGrid.ItemsSource = DBContextVM.Sellers;
             ItemSourseType = DatabaseItemSourseType.seller;
 
         }
 
         private void sellersButton_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = DBContextViewModel.Sellers;
+            dataGrid.ItemsSource = DBContextVM.Sellers;
             ItemSourseType = DatabaseItemSourseType.seller;
+            orderFullInfoButton.Visibility = Visibility.Hidden; orderFullInfoButton.IsEnabled = false;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = DBContextViewModel.Customers;
+            dataGrid.ItemsSource = DBContextVM.Customers;
             ItemSourseType = DatabaseItemSourseType.customer;
+            orderFullInfoButton.Visibility = Visibility.Hidden; orderFullInfoButton.IsEnabled = false;
         }
 
         private void ordersButton_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = DBContextViewModel.Orders;
+            dataGrid.ItemsSource = DBContextVM.Orders;
             ItemSourseType = DatabaseItemSourseType.order;
+            orderFullInfoButton.Visibility = Visibility.Visible; orderFullInfoButton.IsEnabled = true;
+        }
+
+        private void orderFullInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItem == null)
+            {
+                return;
+            }
+            new OrderDetailedWindow(DBContextVM, dataGrid.SelectedItem).Show();
         }
 
         private void addNewButton_Click(object sender, RoutedEventArgs e)
@@ -59,13 +71,41 @@
             switch (ItemSourseType)
             {
                 case DatabaseItemSourseType.seller:
-                    new AddNewSellerWindow(DBContextViewModel).Show();
+                    new AddNewSellerWindow(DBContextVM).Show();
                     break;
                 case DatabaseItemSourseType.customer:
-                    new AddNewCustomerWindow(DBContextViewModel).Show();
+                    new AddNewCustomerWindow(DBContextVM).Show();
                     break;
                 case DatabaseItemSourseType.order:
-                    new AddNewOrderWindow(DBContextViewModel).Show();
+                    new AddNewOrderWindow(DBContextVM).Show();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItem == null)
+            {
+                return;
+            }
+
+            switch (ItemSourseType)
+            {
+                case DatabaseItemSourseType.seller:
+                    DBContextVM.DeleteSeller(dataGrid.SelectedItem);
+                    break;
+                case DatabaseItemSourseType.customer:
+                    DBContextVM.DeleteCustomer(dataGrid.SelectedItem);
+                    break;
+                case DatabaseItemSourseType.order:
+                    DBContextVM.DeleteOrder(dataGrid.SelectedItem);
                     break;
                 default:
                     break;

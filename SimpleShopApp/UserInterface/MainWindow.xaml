@@ -20,9 +20,19 @@
                 HorizontalAlignment="Left" Margin="580,25,0,0" 
                 VerticalAlignment="Top" Height="40" Width="85"
                 Click="ordersButton_Click"/>
+        <Button Name="orderFullInfoButton" Content="View Info" 
+                HorizontalAlignment="Left" Margin="700,25,0,0" 
+                VerticalAlignment="Top" Height="40" Width="85" 
+                Visibility="Hidden" Click="orderFullInfoButton_Click"/>
         <Button Name="addNewButton" Content="Add New" 
-                HorizontalAlignment="Left" Margin="710,180,0,0" 
+                HorizontalAlignment="Left" Margin="710,220,0,0" 
                 VerticalAlignment="Top" Height="30" Width="70"
                 Click="addNewButton_Click"/>
+        <Button Name="updateButton" Content="Update" 
+                HorizontalAlignment="Left" Margin="710,270,0,0" 
+                VerticalAlignment="Top" Height="30" Width="70" Click="updateButton_Click"/>
+        <Button Name="deleteButton" Content="Delete" 
+                HorizontalAlignment="Left" Margin="710,320,0,0" 
+                VerticalAlignment="Top" Height="30" Width="70" Click="deleteButton_Click"/>
     </Grid>
 </Window>

@@ -134,3 +134,5 @@ D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\C
 D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\CRUDWindows\AddNewOrderWindow.g.cs
 D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\CRUDWindows\AddNewCustomerWindow.baml
 D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\CRUDWindows\AddNewOrderWindow.baml
+D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\CRUDWindows\OrderDetailedWindow.g.cs
+D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\obj\Debug\net7.0-windows\CRUDWindows\OrderDetailedWindow.baml

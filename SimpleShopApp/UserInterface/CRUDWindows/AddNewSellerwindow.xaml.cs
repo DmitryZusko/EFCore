@@ -18,8 +18,7 @@ namespace UserInterface.CRUDWindows
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            var newSeller = new SellerDto { FullName = nameTextBox.Text };
-            DBContextViewModel.AddNewSeller(newSeller);
+            DBContextViewModel.AddNewSeller(nameTextBox.Text);
             Close();
         }
 
