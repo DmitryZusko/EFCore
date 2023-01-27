@@ -1,8 +1,26 @@
 ﻿namespace DataBaseModel.DTOModels
 {
-    public class SellerDto
+    public class SellerDto : PropertyChangeNotifier
     {
-        public int Id { get; set; }
-        public string FullName { get; set; }
+        private int _id;
+        private string _fullName;
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+        public string FullName
+        {
+            get => _fullName;
+            set
+            {
+                _fullName = value;
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
     }
 }

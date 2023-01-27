@@ -40,3 +40,17 @@ C:\Users\Prijom\Downloads\EFCore\EFCore\SimpleShopApp\DataBaseModel\obj\Debug\ne
 C:\Users\Prijom\Downloads\EFCore\EFCore\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.pdb
 C:\Users\Prijom\Downloads\EFCore\EFCore\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.genruntimeconfig.cache
 C:\Users\Prijom\Downloads\EFCore\EFCore\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\ref\DataBaseModel.dll
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\bin\Debug\net7.0\DataBaseModel.deps.json
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\bin\Debug\net7.0\DataBaseModel.runtimeconfig.json
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\bin\Debug\net7.0\DataBaseModel.dll
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\bin\Debug\net7.0\DataBaseModel.pdb
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.csproj.AssemblyReference.cache
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.AssemblyInfoInputs.cache
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.AssemblyInfo.cs
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.csproj.CoreCompileInputs.cache
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.dll
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\refint\DataBaseModel.dll
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.pdb
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\DataBaseModel.genruntimeconfig.cache
+C:\Users\Prijom\Downloads\EFCore-feature\SimpleShopApp\DataBaseModel\obj\Debug\net7.0\ref\DataBaseModel.dll

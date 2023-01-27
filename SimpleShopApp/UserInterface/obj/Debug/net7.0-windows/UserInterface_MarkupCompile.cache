@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Projects\EFCore\EFCore\SimpleShopApp\UserInterface\App.xaml
-5-1423427224
+82003151891
 
-82078954417
+11-1611845627
 229909550827
-CRUDWindows\AddNewCustomerWindow.xaml;CRUDWindows\AddNewOrderWindow.xaml;CRUDWindows\AddNewSellerwindow.xaml;CRUDWindows\OrderDetailedWindow.xaml;MainWindow.xaml;
+CRUDWindows\AddNewCustomerWindow.xaml;CRUDWindows\AddNewOrderWindow.xaml;CRUDWindows\AddNewSellerwindow.xaml;CRUDWindows\OrderDetailedWindow.xaml;CRUDWindows\UpdateCustomerWindow.xaml;CRUDWindows\UpdateOrderWindow.xaml;CRUDWindows\UpdateSellerWindow.xaml;MainWindow.xaml;
 
 False
 

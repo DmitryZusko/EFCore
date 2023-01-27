@@ -1,8 +1,26 @@
 ﻿namespace DataBaseModel.DTOModels
 {
-    public class CustomerDto
+    public class CustomerDto : PropertyChangeNotifier
     {
-        public int Id { get; set; }
-        public string Company { get; set; }
+        private int _id;
+        private string _company;
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+        public string Company
+        {
+            get => _company;
+            set
+            {
+                _company = value;
+                OnPropertyChanged(nameof(Company));
+            }
+        }
     }
 }

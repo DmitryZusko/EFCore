@@ -43,7 +43,8 @@
         <TextBlock Name="customerTextBlock" TextWrapping="Wrap" 
                    FontSize="36" Margin="400,300,0,0"
                    Height="100" Width="350" TextAlignment="Center"/>
-
-
+        <Button Name="updateButton" Content="Update"
+                FontSize="28" Height="50" Width="150"
+                Margin="600, -350, 0, 0" Click="updateButton_Click"/>
     </Grid>
 </Window>

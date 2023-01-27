@@ -1,0 +1,35 @@
+﻿<Window x:Class="UserInterface.CRUDWindows.UpdateCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface.CRUDWindows"
+        mc:Ignorable="d"
+        Title="UpdateCustomerWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock TextWrapping="Wrap" Text="UPDATE CUSTOMER"
+                   FontSize=" 54" FontWeight="Bold"
+                   TextAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" Text="Id"
+                   FontSize=" 42" FontWeight="Bold"
+                   TextAlignment="Center" Margin="-75, 70, 0, 0"/>
+        <TextBlock Name="customerIdTextBlock" TextWrapping="Wrap" 
+                   FontSize=" 42" TextAlignment="Center"
+                   Margin="75, 70, 0, 0"/>
+        <TextBlock TextWrapping="Wrap" Text="Customer Company"
+                   FontSize="42" FontWeight="Bold"
+                   TextAlignment="Center"
+                   Margin="0, 150, 0, 0"/>
+        <TextBox Name="customerNameTextBox" TextWrapping="Wrap" 
+                 FontSize="38" TextAlignment="Center"
+                 Height="120" Width="400"
+                 Margin="0, 125, 0, 0"/>
+        <Button Name="okButton" Content="Ok"
+                FontSize="32" Height="50" Width="150"
+                Margin="-450, 350, 0, 0" Click="okButton_Click"/>
+        <Button Name="cancelButton" Content="Cancel"
+                FontSize="32" Height="50" Width="150"
+                Margin="450, 350, 0, 0" Click="cancelButton_Click"/>
+
+    </Grid>
+</Window>

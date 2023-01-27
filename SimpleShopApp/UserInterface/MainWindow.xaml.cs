@@ -22,18 +22,18 @@
         public MainWindow()
         {
             InitializeComponent();
-            _dbContext = new DatabaseContext();
-
-            if (_dbContext.Sellers.Count() == 0 || _dbContext.Sellers == null)
+            using (_dbContext = new DatabaseContext())
             {
-                _dbContext.PopulateDataBase();
+                if (_dbContext.Sellers.Count() == 0 || _dbContext.Sellers == null)
+                {
+                    _dbContext.PopulateDataBase();
+                }
+
+                DBContextVM = new DBContextViewModel();
+
+                dataGrid.ItemsSource = DBContextVM.Sellers;
+                ItemSourseType = DatabaseItemSourseType.seller;
             }
-
-            DBContextVM = new DBContextViewModel(_dbContext);
-
-            dataGrid.ItemsSource = DBContextVM.Sellers;
-            ItemSourseType = DatabaseItemSourseType.seller;
-
         }
 
         private void sellersButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +41,7 @@
             dataGrid.ItemsSource = DBContextVM.Sellers;
             ItemSourseType = DatabaseItemSourseType.seller;
             orderFullInfoButton.Visibility = Visibility.Hidden; orderFullInfoButton.IsEnabled = false;
+            updateButton.Visibility = Visibility.Visible; updateButton.IsEnabled = true;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +49,7 @@
             dataGrid.ItemsSource = DBContextVM.Customers;
             ItemSourseType = DatabaseItemSourseType.customer;
             orderFullInfoButton.Visibility = Visibility.Hidden; orderFullInfoButton.IsEnabled = false;
+            updateButton.Visibility = Visibility.Visible; updateButton.IsEnabled = true;
         }
 
         private void ordersButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +57,7 @@
             dataGrid.ItemsSource = DBContextVM.Orders;
             ItemSourseType = DatabaseItemSourseType.order;
             orderFullInfoButton.Visibility = Visibility.Visible; orderFullInfoButton.IsEnabled = true;
+            updateButton.Visibility = Visibility.Hidden; updateButton.IsEnabled = false;
         }
 
         private void orderFullInfoButton_Click(object sender, RoutedEventArgs e)
@@ -86,7 +89,22 @@
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
+            if (dataGrid.SelectedItem == null)
+            {
+                return;
+            }
 
+            switch (ItemSourseType)
+            {
+                case DatabaseItemSourseType.seller:
+                    new UpdateSellerWindow(DBContextVM, dataGrid.SelectedItem).Show();
+                    break;
+                case DatabaseItemSourseType.customer:
+                    new UpdateCustomerWindow(DBContextVM, dataGrid.SelectedItem).Show();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)

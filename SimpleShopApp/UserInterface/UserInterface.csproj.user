@@ -19,6 +19,15 @@
     <Compile Update="CRUDWindows\OrderDetailedWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CRUDWindows\UpdateCustomerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CRUDWindows\UpdateOrderWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CRUDWindows\UpdateSellerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CRUDWindows\AddNewCustomerWindow.xaml">
@@ -31,6 +40,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CRUDWindows\OrderDetailedWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CRUDWindows\UpdateCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CRUDWindows\UpdateOrderWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CRUDWindows\UpdateSellerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
