@@ -1,0 +1,51 @@
+﻿<Window x:Class="UserInterface.CRUDWindows.UpdateOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface.CRUDWindows"
+        mc:Ignorable="d"
+        Title="UpdateOrderWindow" Height="567" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <TextBlock Text="UPDATE ORDER" FontSize="48"
+                   FontWeight="Bold" Margin="0,-450,0,0"
+                   Height="75" Width="400" TextAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" FontSize="36" Text="Id"
+                   Margin="-50,-350,0,0" FontWeight="Bold"
+                   Height="50" Width="80"/>
+        <TextBlock Name="orderIdTextBlock" TextWrapping="Wrap" 
+                   FontSize="36" Margin="50,-350,0,0"
+                   Height="50" Width="80"/>
+        <TextBlock TextWrapping="Wrap" Text="Amount" FontSize="36"
+                   FontWeight="Bold" Margin="-500,-250,0,0"
+                   Height="50" Width="220"/>
+        <TextBox Name="amountTextBlock" TextWrapping="Wrap" 
+                 FontSize="36" Margin="-450,-150,0,0"
+                   Height="50" Width="220"/>
+        <TextBlock TextWrapping="Wrap" Text="Order Date" FontSize="36"
+                   FontWeight="Bold" Margin="-500,75,0,0"
+                   Height="50" Width="220"/>
+        <TextBlock Name="orderDateTextBlock" TextWrapping="Wrap" 
+                   FontSize="36"
+                   Margin="-450,175,0,0" TextAlignment="Center"
+                   Height="50" Width="350"/>
+        <TextBlock TextWrapping="Wrap" Text="Seller" FontSize="36"
+                   FontWeight="Bold" Margin="250,-250,0,0"
+                   Height="50" Width="150" TextAlignment="Right"/>
+        <ListBox Name="sellerListBox" FontSize="28"
+                 Height="100" Width="250"
+                 Margin="350, -100, 0, 0"/>
+        <TextBlock TextWrapping="Wrap" Text="Customer" FontSize="36"
+                   FontWeight="Bold" Margin="250,75,0,0"
+                   Height="50" Width="170" TextAlignment="Right"/>
+        <ListBox Name="customerListBox" FontSize="28"
+                 Height="100" Width="250"
+                 Margin="350, 225, 0, 0"/>
+        <Button Name="okButton" Content="Ok"
+                Height="50" Width="100" FontSize="24"
+                Margin="-550, 450, 0, 0" Click="okButton_Click"/>
+        <Button Name="cancelButton" Content="Cancel"
+                Height="50" Width="100" FontSize="24"
+                Margin="550, 450, 0, 0" Click="cancelButton_Click"/>
+    </Grid>
+</Window>
