@@ -1,21 +1,10 @@
-﻿using DataBaseModel.DTOModels;
-using DataBaseModel.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace UserInterface.CRUDWindows
+﻿namespace UserInterface.CRUDWindows
 {
+    using DataBaseModel.DTOModels;
+    using DataBaseModel.ViewModel;
+    using System;
+    using System.Linq;
+    using System.Windows;
     /// <summary>
     /// Interaction logic for UpdateOrderWindow.xaml
     /// </summary>
@@ -30,7 +19,7 @@ namespace UserInterface.CRUDWindows
             DBContextVM = context;
             OldOrder = oldOrder;
             orderIdTextBlock.Text = $"# {oldOrder.Id}";
-            amountTextBlock.Text = oldOrder.Amount.ToString();
+            amountTextBlock.Text = oldOrder.Amount.ToString("0.000");
             orderDateTextBlock.Text = oldOrder.OrderDate.ToString();
             sellerListBox.ItemsSource = DBContextVM.Sellers.Select(s => s.FullName);
             sellerListBox.SelectedIndex = 0;

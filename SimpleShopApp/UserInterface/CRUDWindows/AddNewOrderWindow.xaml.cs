@@ -1,11 +1,8 @@
-﻿using DataBaseModel.DTOModels;
-using DataBaseModel.ViewModel;
-using System;
-using System.Linq;
-using System.Windows;
-
-namespace UserInterface.CRUDWindows
+﻿namespace UserInterface.CRUDWindows
 {
+    using DataBaseModel.ViewModel;
+    using System.Linq;
+    using System.Windows;
     /// <summary>
     /// Interaction logic for AddNewOrderWindow.xaml
     /// </summary>

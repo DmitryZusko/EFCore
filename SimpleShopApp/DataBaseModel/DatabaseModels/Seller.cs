@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DataBaseModel.DatabaseModels
+﻿namespace DataBaseModel.DatabaseModels
 {
     public class Seller
     {

@@ -1,11 +1,8 @@
-﻿using DataBaseModel.DTOModels;
-using DataBaseModel.ViewModel;
-using System;
-using System.Linq;
-using System.Windows;
-
-namespace UserInterface.CRUDWindows
+﻿namespace UserInterface.CRUDWindows
 {
+    using DataBaseModel.DTOModels;
+    using DataBaseModel.ViewModel;
+    using System.Windows;
     /// <summary>
     /// Interaction logic for OrderDetailedWindow.xaml
     /// </summary>
@@ -16,11 +13,11 @@ namespace UserInterface.CRUDWindows
         public OrderDetailedWindow(DBContextViewModel context, object selectedItem)
         {
             InitializeComponent();
-            DBContextVM= context;
+            DBContextVM = context;
             DetailedOrder = DBContextVM.ShowDetailedOrder(selectedItem);
 
             orderIdTextBlock.Text = $"# {DetailedOrder.Id}";
-            amountTextBlock.Text = DetailedOrder.Amount.ToString();
+            amountTextBlock.Text = DetailedOrder.Amount.ToString("0.000");
             orderDateTextBlock.Text = $"{DetailedOrder.OrderDate.ToShortDateString()} {DetailedOrder.OrderDate.ToShortTimeString()}";
             sellerIdTextBlock.Text = $"# {DetailedOrder.SellerId}";
             sellerTextBlock.Text = DetailedOrder.SellerFullName.ToString();

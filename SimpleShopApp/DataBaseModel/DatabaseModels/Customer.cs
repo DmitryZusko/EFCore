@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DataBaseModel.DatabaseModels
+﻿namespace DataBaseModel.DatabaseModels
 {
+    using System.ComponentModel.DataAnnotations;
     public class Customer
     {
         public int Id { get; set; }

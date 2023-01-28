@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace DataBaseModel.DatabaseModels
+﻿namespace DataBaseModel.DatabaseModels
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Order
     {
         public int Id { get; set; }

@@ -40,7 +40,7 @@
         }
         public string SellerFullName
         {
-            get => _sellerFullName; 
+            get => _sellerFullName;
             set
             {
                 _sellerFullName = value;

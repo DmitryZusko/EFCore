@@ -1,10 +1,6 @@
 ﻿namespace UserInterface
 {
-    using AutoMapper;
-    using DataBaseModel.Data;
     using DataBaseModel.ViewModel;
-    using System.ComponentModel;
-    using System.Linq;
     using System.Windows;
     using UserInterface.CRUDWindows;
 
@@ -15,25 +11,16 @@
 
     public partial class MainWindow : Window
     {
-        private DatabaseContext _dbContext;
-
         public DBContextViewModel DBContextVM { get; set; }
         public DatabaseItemSourseType ItemSourseType { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            using (_dbContext = new DatabaseContext())
-            {
-                if (_dbContext.Sellers.Count() == 0 || _dbContext.Sellers == null)
-                {
-                    _dbContext.PopulateDataBase();
-                }
 
-                DBContextVM = new DBContextViewModel();
+            DBContextVM = new DBContextViewModel();
 
-                dataGrid.ItemsSource = DBContextVM.Sellers;
-                ItemSourseType = DatabaseItemSourseType.seller;
-            }
+            dataGrid.ItemsSource = DBContextVM.Sellers;
+            ItemSourseType = DatabaseItemSourseType.seller;
         }
 
         private void sellersButton_Click(object sender, RoutedEventArgs e)

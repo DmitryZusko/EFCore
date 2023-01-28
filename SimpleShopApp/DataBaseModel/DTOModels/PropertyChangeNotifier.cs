@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataBaseModel.DTOModels
+﻿namespace DataBaseModel.DTOModels
 {
+    using System.ComponentModel;
     public class PropertyChangeNotifier : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

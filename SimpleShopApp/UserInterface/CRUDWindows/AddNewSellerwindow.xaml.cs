@@ -1,9 +1,7 @@
-﻿using DataBaseModel.DTOModels;
-using DataBaseModel.ViewModel;
-using System.Windows;
-
-namespace UserInterface.CRUDWindows
+﻿namespace UserInterface.CRUDWindows
 {
+    using DataBaseModel.ViewModel;
+    using System.Windows;
     /// <summary>
     /// Interaction logic for AddNewSellerwindow.xaml
     /// </summary>

@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using DataBaseModel.Data;
-using DataBaseModel.DatabaseModels;
-using DataBaseModel.DTOModels;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-
-namespace DataBaseModel.ViewModel
+﻿namespace DataBaseModel.ViewModel
 {
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using DataBaseModel.Data;
+    using DataBaseModel.DatabaseModels;
+    using DataBaseModel.DTOModels;
+    using System.Collections.ObjectModel;
     public class DBContextViewModel
     {
         private MapperConfiguration _projectionConfig;
@@ -25,29 +21,33 @@ namespace DataBaseModel.ViewModel
 
         public DBContextViewModel()
         {
+            _projectionConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateProjection<Seller, SellerDto>();
+                cfg.CreateProjection<Customer, CustomerDto>();
+                cfg.CreateProjection<Order, OrderDto>();
+                cfg.CreateProjection<Order, OrderDetailDto>()
+                .ForMember(dto => dto.SellerFullName, conf => conf.MapFrom(o => o.Seller.FullName))
+                .ForMember(dto => dto.CustomerCompany, conf => conf.MapFrom(o => o.Customer.Company));
+            });
+
+            var mapperconfig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Seller, SellerDto>().ReverseMap();
+                cfg.CreateMap<Customer, CustomerDto>().ReverseMap();
+                cfg.CreateMap<Order, OrderDto>().ReverseMap();
+                cfg.CreateMap<Order, OrderDetailDto>().ReverseMap();
+                cfg.CreateMap<OrderDto, OrderDetailDto>().ReverseMap();
+            });
+
+            _mapper = new Mapper(mapperconfig);
+
             using (_dbContext = new DatabaseContext())
             {
-                _projectionConfig = new MapperConfiguration(cfg =>
+                if (_dbContext.Sellers.Count() == 0 || _dbContext.Sellers == null)
                 {
-                    cfg.CreateProjection<Seller, SellerDto>();
-                    cfg.CreateProjection<Customer, CustomerDto>();
-                    cfg.CreateProjection<Order, OrderDto>();
-                    cfg.CreateProjection<Order, OrderDetailDto>()
-                    .ForMember(dto => dto.SellerFullName, conf => conf.MapFrom(o => o.Seller.FullName))
-                    .ForMember(dto => dto.CustomerCompany, conf => conf.MapFrom(o => o.Customer.Company));
-                });
-
-                var mapperconfig = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<Seller, SellerDto>().ReverseMap();
-                    cfg.CreateMap<Customer, CustomerDto>().ReverseMap();
-                    cfg.CreateMap<Order, OrderDto>().ReverseMap();
-                    cfg.CreateMap<Order, OrderDetailDto>().ReverseMap();
-                    cfg.CreateMap<OrderDto, OrderDetailDto>().ReverseMap();
-                });
-
-                _mapper = new Mapper(mapperconfig);
-
+                    _dbContext.PopulateDataBase();
+                }
                 Sellers = new ObservableCollection<SellerDto>(_dbContext.Sellers.ProjectTo<SellerDto>(_projectionConfig));
                 Customers = new ObservableCollection<CustomerDto>(_dbContext.Customers.ProjectTo<CustomerDto>(_projectionConfig));
                 Orders = new ObservableCollection<OrderDto>(_dbContext.Orders.ProjectTo<OrderDto>(_projectionConfig));
@@ -56,22 +56,22 @@ namespace DataBaseModel.ViewModel
 
         public OrderDetailDto ShowDetailedOrder(object selectedItem)
         {
-            using(_dbContext = new DatabaseContext())
+            var detailedOrder = (OrderDto)selectedItem;
+            using (_dbContext = new DatabaseContext())
             {
-                var detailedOrder = (OrderDto)selectedItem;
                 return _dbContext.Orders.Where(o => o.Id == detailedOrder.Id).ProjectTo<OrderDetailDto>(_projectionConfig).FirstOrDefault();
             }
         }
 
         public void AddNewSeller(string newSellerName)
         {
-            if (newSellerName == null || newSellerName.Count() < 1)
+            if (newSellerName == null)
             {
                 return;
             }
 
             var newSeller = new Seller { FullName = newSellerName };
-            using(_dbContext = new DatabaseContext())
+            using (_dbContext = new DatabaseContext())
             {
                 _dbContext.Sellers.Add(newSeller);
                 _dbContext.SaveChanges();
@@ -81,13 +81,13 @@ namespace DataBaseModel.ViewModel
 
         public void AddNewCustomer(string newCustomerName)
         {
-            if (newCustomerName == null || newCustomerName.Count() <1)
+            if (newCustomerName == null)
             {
                 return;
             }
 
             var newCustomer = new Customer { Company = newCustomerName };
-            using(_dbContext = new DatabaseContext())
+            using (_dbContext = new DatabaseContext())
             {
                 _dbContext.Customers.Add(newCustomer);
                 _dbContext.SaveChanges();
@@ -97,10 +97,10 @@ namespace DataBaseModel.ViewModel
 
         public void AddNewOrder(string amount, string seller, string customer)
         {
-            using(_dbContext = new DatabaseContext())
+            decimal orderAmount;
+            decimal.TryParse(amount, out orderAmount);
+            using (_dbContext = new DatabaseContext())
             {
-                decimal orderAmount;
-                decimal.TryParse(amount, out orderAmount);
                 var newOrder = new Order
                 {
                     Amount = orderAmount,
@@ -168,10 +168,10 @@ namespace DataBaseModel.ViewModel
 
         public void DeleteSeller(object selectedItem)
         {
+            var deletedSeller = (SellerDto)selectedItem;
+            Sellers.Remove(deletedSeller);
             using (_dbContext = new DatabaseContext())
             {
-                var deletedSeller = (SellerDto)selectedItem;
-                Sellers.Remove(deletedSeller);
                 _dbContext.Sellers.Remove(_mapper.Map<Seller>(deletedSeller));
                 _dbContext.SaveChanges();
             }
@@ -179,10 +179,10 @@ namespace DataBaseModel.ViewModel
 
         public void DeleteCustomer(object selectedItem)
         {
+            var deletedCustomer = (CustomerDto)selectedItem;
+            Customers.Remove(deletedCustomer);
             using (_dbContext = new DatabaseContext())
             {
-                var deletedCustomer = (CustomerDto)selectedItem;
-                Customers.Remove(deletedCustomer);
                 _dbContext.Customers.Remove(_mapper.Map<Customer>(deletedCustomer));
                 _dbContext.SaveChanges();
             }
@@ -190,10 +190,10 @@ namespace DataBaseModel.ViewModel
 
         public void DeleteOrder(object selectedItem)
         {
+            var deletedOrder = (OrderDto)selectedItem;
+            Orders.Remove(deletedOrder);
             using (_dbContext = new DatabaseContext())
             {
-                var deletedOrder = (OrderDto)selectedItem;
-                Orders.Remove(deletedOrder);
                 _dbContext.Orders.Remove(_mapper.Map<Order>(deletedOrder));
                 _dbContext.SaveChanges();
             }
